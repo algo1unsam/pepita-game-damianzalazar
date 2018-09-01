@@ -4,9 +4,14 @@ object roque {
 	
 	method imagen() = "jugador.png"
 	method levantar(comida){
+		if (comidaActual != null){
+			//PONER EN EL TABLEROOOOOOOOO
+			addVisual()
+			comida.posicion.up(1)
+		}
 		comidaActual = comida
 		game.removeVisual(comida)
-		// FALTA poner a roque en la posicion de la comida
+		
 	}
 	
 }
