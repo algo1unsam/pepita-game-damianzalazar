@@ -1,3 +1,4 @@
+import roque.*
 import pepita.*
 import ciudades.*
 import comidas.*
@@ -16,11 +17,28 @@ program PepitaGame {
 	game.addVisualIn(manzana, game.at(5,1))
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
-	game.addVisualCharacter(pepita)
+	//game.addVisualCharacter(pepita)
+	game.addVisual(pepita)
+	game.addVisualCharacter(roque)
 
 //	TECLADO
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
+	keyboard.a().onPressDo { 
+		roque.levantar(alpiste)
+		roque.posicion(game.at(5,5)) //MEJORAR ponerlo en roque
+	}
+	keyboard.m().onPressDo { 
+		pepita.come(manzana)
+	}
+	// Cualquier cosa que encuentra se remueve del tablero
+//	game.whenCollideDo(roque, { algo => 
+//		game.removeVisual(algo)
+//		roque.levantar(algo)
+//		}
+//	)
+		
+	game.whenCollideDo(roque, { algo => algo.teEncontro(roque) })
 		
 //	START
 	game.start()
