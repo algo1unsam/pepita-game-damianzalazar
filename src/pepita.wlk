@@ -3,8 +3,8 @@ import ciudades.*
 object pepita {
 	var property energia = 100
 	var property ciudad = buenosAires 
-
 	var property posicion = game.at(3,3)
+	
 	method imagen() = "pepita.png"
 
 	method come(comida) {
@@ -23,5 +23,9 @@ object pepita {
 	method move(nuevaPosicion) {
 		energia -= self.energiaParaVolar(posicion.distance(nuevaPosicion))
 		self.posicion(nuevaPosicion)
+	}
+	
+	method teEncontro(alguien){
+		
 	}	
 }
