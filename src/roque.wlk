@@ -1,11 +1,11 @@
 object roque {
 	var property posicion = game.at(1,9)
-	var comidaActual = null
+	var property comidaActual = null
 	
 	method imagen() = "jugador.png"
 	method levantar(comida){
 		if (comidaActual != null){
-			game.addVisualIn(comidaActual, comidaActual.posicion())
+			game.addVisual(comidaActual)
 		}
 		comidaActual = comida
 		game.removeVisual(comida)
@@ -13,3 +13,4 @@ object roque {
 	}
 	
 }
+//game.addVisual(comida.posicion.up(1))
