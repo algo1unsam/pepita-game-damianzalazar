@@ -13,8 +13,15 @@ object pepita {
 	
 	method volaHacia(unaCiudad) {
 		if (ciudad != unaCiudad) {
-			self.move(unaCiudad.posicion())
-			ciudad = unaCiudad
+			// DUDA. COMO HAGO PARA VER EL CALCULO DISTANCE?	
+			if (self.energia() < self.energiaParaVolar(posicion.distance(unaCiudad.posicion()))){
+				game.say(self, "Dame de comer primero !")
+			}
+			else{
+				ciudad = unaCiudad
+				self.posicion(unaCiudad.posicion())
+				energia -= self.energiaParaVolar(posicion.distance(unaCiudad.posicion()))
+		}
 		} 
 		else {
 			game.say(self, "Ya estoy en " + unaCiudad + " !") 
@@ -23,20 +30,11 @@ object pepita {
 
 	method energiaParaVolar(distancia) = 15 + 5 * distancia
 
-	method move(nuevaPosicion) {	
-		// DUDA. COMO HAGO PARA VER EL CALCULO DISTANCE?	
-		if (self.energia() < self.energiaParaVolar(posicion.distance(nuevaPosicion))){
-			game.say(self, "Dame de comer primero !")
-		}
-		else{
-			energia -= self.energiaParaVolar(posicion.distance(nuevaPosicion))
-			self.posicion(nuevaPosicion)
-		}
-	}
+	//method move(nuevaPosicion) {	}
 	
 	method teEncontro(alguien){
 		self.come(alguien.comidaActual)
 		game.addVisual(alguien.comidaActual)
 		alguien.comidaActual(null)
-	}	
+	}
 }
