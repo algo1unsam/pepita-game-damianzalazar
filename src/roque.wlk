@@ -1,3 +1,5 @@
+import pepita.*
+
 object roque {
 	var property posicion = game.at(1,9)
 	var property comidaActual = null
@@ -9,7 +11,16 @@ object roque {
 		}
 		comidaActual = comida
 		game.removeVisual(comida)
-		
+	}
+	method tieneComida() {
+		if(comidaActual == null){
+			game.say(pepita, "No tienes mas comida")
+		}
+		else{
+			pepita.come(comidaActual)
+			game.addVisual(comidaActual)
+			comidaActual = null
+		}
 	}
 	
 }
