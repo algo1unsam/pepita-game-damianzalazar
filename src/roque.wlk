@@ -1,27 +1,30 @@
 import pepita.*
 
 object roque {
-	var property posicion = game.at(1,9)
+
+	var property posicion = game.at(1, 9)
 	var property comidaActual = null
-	
+
 	method imagen() = "jugador.png"
-	method levantar(comida){
-		if (comidaActual != null){
+
+	method levantar(comida) {
+		if (comidaActual != null) {
 			game.addVisual(comidaActual)
 		}
 		comidaActual = comida
 		game.removeVisual(comida)
 	}
+
 	method tieneComida() {
-		if(comidaActual == null){
-			game.say(pepita, "No tienes mas comida")
-		}
-		else{
+		if (comidaActual != null) {
 			pepita.come(comidaActual)
 			game.addVisual(comidaActual)
 			comidaActual = null
+		} else {
+			game.say(pepita, "No tienes mas comida")
 		}
 	}
-	
+
 }
-//game.addVisual(comida.posicion.up(1))
+
+//game.addVisual(comida.posicion.up(1)) 

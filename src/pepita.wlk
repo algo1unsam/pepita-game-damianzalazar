@@ -5,12 +5,19 @@ object pepita {
 	var property energia = 100
 	var property ciudad = null 
 	var property posicion = game.at(3,3)
-	var property imagen = "pepita.png"
-
-	method come(comida) {
-		energia = energia + comida.energia()
-		self.cambiaImagen()
+	
+	method imagen(){
+		if(energia < 10) { return "pepona.png" }
+		
+		if(energia > 100){
+			return "pepita2.png"
+			}
+		else{
+			return "pepita.png"
+			}	
 	}
+
+	method come(comida) { energia = energia + comida.energia() }
 	
 	method volaHacia(unaCiudad) {
 		if (ciudad != unaCiudad) {
@@ -21,8 +28,8 @@ object pepita {
 			else{
 				ciudad = unaCiudad
 				self.posicion(unaCiudad.posicion())
+				//console.println("Posicion.distance: " + posicion.distance(unaCiudad.posicion()))
 				energia -= self.energiaParaVolar(posicion.distance(unaCiudad.posicion()))
-				self.cambiaImagen()
 			}
 		}
 		else {
@@ -35,18 +42,4 @@ object pepita {
 	//method move(nuevaPosicion) {	}
 	
 	method teEncontro(alguien) { alguien.tieneComida() }
-	
-	method cambiaImagen(){
-		if(energia < 10){
-			self.imagen("pepona.png")
-		}
-		else{ 
-			if(energia > 100){
-				self.imagen("pepita2.png")
-			}
-			else{
-				self.imagen("pepita.png")
-			}	
-		}
-	}
 }

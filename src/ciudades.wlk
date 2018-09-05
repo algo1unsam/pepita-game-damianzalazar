@@ -10,4 +10,5 @@ object buenosAires {
 	method nombre() = "Buenos Aires"
 	method posicion() = game.at(1,1)
 	method teEncontro(alguien) { game.say(self,"Bienvenido a Buenos Aires !") }
+	
 }
