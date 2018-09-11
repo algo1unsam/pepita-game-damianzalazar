@@ -18,7 +18,7 @@ object roque {
 	method tieneComida() {
 		if (comidaActual != null) {
 			pepita.come(comidaActual)
-			game.addVisual(comidaActual)
+			game.addVisualIn(comidaActual, game.at(1.randomUpTo(9),1.randomUpTo(9)))
 			comidaActual = null
 		} else {
 			game.say(pepita, "No tienes mas comida")
