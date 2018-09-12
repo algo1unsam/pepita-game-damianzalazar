@@ -19,6 +19,7 @@ program PepitaGame {
 	game.addVisual(manzana)
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
+	// TODO sep, está mal, se puede borrar este comentario
 	//game.addVisualCharacter(pepita) // MAL Se mueven pepita y roque a la vez
 	game.addVisual(pepita)
 	game.addVisualCharacter(roque)
@@ -26,6 +27,7 @@ program PepitaGame {
 //	TECLADO
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
+	// TODO sólo el alpiste se puede levantar?
 	keyboard.a().onPressDo { 
 		roque.levantar(alpiste)
 		roque.posicion(game.at(5,5)) //TEST
